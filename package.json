@@ -1,0 +1,25 @@
+{
+  "name": "test",
+  "version": "1.0.0",
+  "description": "Node homework",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Massiel50/DeveloperProfileGen.git"
+  },
+  "author": "Massiel Escano",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Massiel50/DeveloperProfileGen/issues"
+  },
+  "homepage": "https://github.com/Massiel50/DeveloperProfileGen#readme",
+  "dependencies": {
+    "axios": "^0.19.0",
+    "electron": "^5.0.3",
+    "electron-html-to": "^2.6.0",
+    "inquirer": "^7.0.1"
+  }
+}
