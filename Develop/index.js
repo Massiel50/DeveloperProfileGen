@@ -8,6 +8,7 @@ const generateHtml = require("./generateHTML");
 
 inquirer.prompt([
     {
+        type: "input",
         message: "Whats your Github username?",
         name: "username"
     },
@@ -18,30 +19,12 @@ inquirer.prompt([
         choices: ["green", "blue", "pink", "red"]
     }
 ])
-.then(function({answers}){
+.then(function(answers){
     console.log(answers)
+
     const queryURL = `https://api.github.com/users/${answers.username}`;
 
     axios.get(queryURL).then(function(res){
-      
-
-        const repoqueryURL = `https://api.github.com/users/${answers.username}/repos`;
-
-        axios.get(repoqueryURL).then(function(res){
-            const repoNames = res.data.map(function(repo){
-                console.log(repoNames)
-                return repo.name;
-            });
-
-        const repoNamesStr = repoNames.join("\n");
-
-        fs.writeFile("repos.txt", repoNamesStr, function(err){
-            if (err){
-                throw err;
-            }
-            console.log(repoNamesStr)
-        })
-    });
     const pdfInfo = {
         user: answers.username,
         color: answers.color,
@@ -50,29 +33,45 @@ inquirer.prompt([
         followers: res.followers
     }
 
-    // module.exports = {
-    //     user: answers.username,
-    //     color: answers.color,
-    //     stars: 1,
-    //     image: res.avatar_url,
-    //     followers: res.followers
-    //   };
-      
-    const htmlDone = generateHtml(pdfInfo);
+    console.log(pdfInfo);
+    
+});
 
-    var conversion = convertFactory({
-        converterPath: convertFactory.converters.PDF
-    });
-    conversion({html: htmlDone}, function(err, result){
-        if (err){
-            return console.error(err)
-        }
+//         const repoqueryURL = `https://api.github.com/users/${answers.username}/repos`;
 
-        console.log(result.numberOfPages);
-        console.log(resul.log);
-        result.stream.pipe(fs.createWriteStream('pdf.pdf'));
-    })
+//         axios.get(repoqueryURL).then(function(res){
+//             console.log(res);
+//             const repoNames = res.map(function(repo){
+//                 console.log(repoNames)
+//                 return repo.name;
+//             });
+
+//         const repoNamesStr = repoNames.join("\n");
+
+//         fs.writeFile("repos.txt", repoNamesStr, function(err){
+//             if (err){
+//                 throw err;
+//             }
+//             console.log(repoNamesStr)
+//         })
+
+        
+//     });
+    
 })
 
-  
-})
+
+    // const htmlDone = generateHtml(pdfInfo);
+
+    // var conversion = convertFactory({
+    //     converterPath: convertFactory.converters.PDF
+    // });
+    // conversion({html: htmlDone}, function(err, result){
+    //     if (err){
+    //         return console.error(err)
+    //     }
+
+    //     console.log(result.numberOfPages);
+    //     console.log(resul.log);
+    //     result.stream.pipe(fs.createWriteStream('pdf.pdf'));
+    // })

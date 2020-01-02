@@ -175,4 +175,4 @@ function generateHTML(data) {
       </style>`
         }
 
-        generateHTML();
+        // generateHTML();
