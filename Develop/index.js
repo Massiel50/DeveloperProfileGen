@@ -33,6 +33,8 @@ inquirer
       name: res.data.login,
       color: answers.color,
       avatar_url: res.data.avatar_url,
+      location: res.data.location,
+      html_url: res.data.html_url,
       followers: res.data.followers,
       following: res.data.following,
       public_repos: res.data.public_repos,
