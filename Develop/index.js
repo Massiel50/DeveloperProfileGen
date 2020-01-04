@@ -30,11 +30,13 @@ inquirer
     axios.get(queryURL).then(function(res) {
 
     const pdfInfo = {
-      user: answers.username,
+      name: res.data.login,
       color: answers.color,
-      image: res.avatar_url,
-      followers: res.followers,
-      repos: res.public_repos
+      avatar_url: res.data.avatar_url,
+      followers: res.data.followers,
+      following: res.data.following,
+      public_repos: res.data.public_repos,
+      bio: res.data.bio
     };
     console.log(pdfInfo);
 
