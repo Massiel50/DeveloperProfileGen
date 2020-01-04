@@ -38,7 +38,8 @@ inquirer
       followers: res.data.followers,
       following: res.data.following,
       public_repos: res.data.public_repos,
-      bio: res.data.bio
+      bio: res.data.bio,
+      stars: 0
     };
     console.log(pdfInfo);
 
